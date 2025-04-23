@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <RelativeLayout
+        android:id="@+id/layoutSurfaceView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_above="@+id/layout"
+        android:layout_alignParentTop="true"
+        android:background="@color/black"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.media3.ui.AspectRatioFrameLayout
+            android:id="@+id/aspectRatioFrameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:background="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintWidth_percent="1">
+
+            <androidx.media3.ui.PlayerView
+                android:id="@+id/videoLoader"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center" />
+        </androidx.media3.ui.AspectRatioFrameLayout>
+
+        <ImageView
+            android:id="@+id/iconVideoPlay"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/play_button"
+            tools:ignore="ContentDescription" />
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:background="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/layout" />
+
+
+    <RelativeLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_1sdp"
+        app:layout_constraintTop_toBottomOf="@+id/layoutSurfaceView">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:layout_marginTop="@dimen/_1sdp"
+            android:layout_below="@+id/timeLineFrame"
+            android:background="#E0E0E0"/>
+
+
+        <RelativeLayout
+            android:id="@+id/timeFrame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@drawable/rounded_textview_video_trim"
+            android:backgroundTint="@color/appcolor"
+            android:gravity="center_horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/textTimeSelection"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:gravity="center"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingEnd="@dimen/_10sdp"
+                android:paddingBottom="@dimen/_3sdp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_10ssp"
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/timeLineFrame"
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:layout_below="@+id/timeFrame"
+            android:paddingTop="@dimen/_5sdp"
+            android:background="@color/black"
+            android:paddingBottom="@dimen/_5sdp"
+            android:visibility="visible">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="1dp"
+                android:background="#E0E0E0"/>
+
+            <FrameLayout
+                android:id="@+id/frame_color"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_54sdp"
+                android:paddingTop="@dimen/_5sdp"
+                android:paddingBottom="@dimen/_5sdp">
+
+                <com.addmusictovideos.audiovideomixer.sk.utils.TimeLineView
+                    android:id="@+id/timeLineView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/_23sdp"
+                    android:layout_marginEnd="@dimen/_23sdp" />
+
+            </FrameLayout>
+
+            <SeekBar
+                android:id="@+id/handlerTop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_12sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:max="1000"
+                android:progressDrawable="@android:color/transparent"
+                android:secondaryProgress="0"
+                android:thumb="@drawable/ic_pointer"
+                android:visibility="invisible" />
+
+            <com.addmusictovideos.audiovideomixer.sk.utils.RangeSeekBarView
+                android:id="@+id/timeLineBar"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_alignTop="@+id/frame_color"
+                android:layout_alignBottom="@+id/frame_color"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_marginEnd="@dimen/_12sdp"
+                android:layout_marginBottom="@dimen/_2sdp" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="OutputVolume"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view" />
+
+    <SeekBar
+        android:id="@+id/simpleSeekBar"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:indeterminate="false"
+        android:max="200"
+        android:min="0"
+        android:progressTint="@color/appcolor"
+        android:thumbTint="@color/appcolor"
+        app:layout_constraintBottom_toBottomOf="@+id/textView4"
+        android:layout_marginStart="@dimen/_5sdp"
+        app:layout_constraintStart_toEndOf="@+id/textView4"
+        app:layout_constraintTop_toTopOf="@+id/textView4" />
+
+    <TextView
+        android:id="@+id/tvVolumePercentage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:fontFamily="@font/poppins_semibold"
+        android:textColor="@color/white"
+        android:text="100%"
+        app:layout_constraintBottom_toBottomOf="@+id/simpleSeekBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/simpleSeekBar" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

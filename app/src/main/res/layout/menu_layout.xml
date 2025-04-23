@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/menu_layout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_menu"
+    android:orientation="vertical"
+    android:gravity="start"
+    android:padding="20dp"
+    android:paddingEnd="@dimen/_50sdp">
+
+    <TextView
+        android:id="@+id/menu_share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:textSize="@dimen/_12ssp"
+        android:drawablePadding="@dimen/_10sdp"
+        android:text="@string/share"
+        android:textColor="@android:color/white"
+        app:drawableStartCompat="@drawable/ic_share" />
+    <TextView
+        android:id="@+id/menu_rename"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:textSize="@dimen/_12ssp"
+        android:drawablePadding="@dimen/_10sdp"
+        android:text="@string/rename"
+        android:visibility="gone"
+        android:textColor="@android:color/white"
+        app:drawableStartCompat="@drawable/ic_edit"
+        app:drawableTint="@color/white" />
+
+    <TextView
+        android:id="@+id/menu_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="5dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingEnd="10dp"
+        android:textSize="@dimen/_12ssp"
+        android:drawablePadding="@dimen/_10sdp"
+        android:text="@string/file_info"
+        android:textColor="@android:color/white"
+        app:drawableStartCompat="@drawable/ic_fileinfo" />
+
+    <TextView
+        android:id="@+id/menu_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:textSize="@dimen/_12ssp"
+        android:drawableStart="@drawable/ic_delete_file"
+        android:drawableTint="@color/white"
+        android:drawablePadding="@dimen/_10sdp"
+        android:text="Delete"
+        android:textColor="@android:color/white" />
+
+</LinearLayout>

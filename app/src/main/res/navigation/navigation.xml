@@ -1,0 +1,1054 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/user_flow_graph"
+    app:startDestination="@id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.addmusictovideos.audiovideomixer.sk.fragments.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/action_nav_AllVideos_to_nav_home"
+            app:destination="@id/nav_home" />
+
+        <action
+            android:id="@+id/action_nav_AllVideos_to_nav_alloutput"
+            app:destination="@id/nav_allOutputFragment" />
+
+        <action
+            android:id="@+id/action_nav_home_to_nav_AllVideos"
+            app:destination="@id/nav_all_videos" />
+
+        <action
+            android:id="@+id/action_nav_home_to_nav_AllAudios"
+            app:destination="@id/nav_all_audio" />
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="com.addmusictovideos.audiovideomixer.sk.fragments.SettingFragment"
+        android:label="Settings Fragment"
+        tools:layout="@layout/fragment_setting">
+
+        <action
+            android:id="@+id/action_settings_to_nav_home"
+            app:destination="@id/nav_home" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_all_videos"
+        android:name="com.addmusictovideos.audiovideomixer.sk.fragments.AllVideosFragment"
+        android:label="Settings Fragment"
+        tools:layout="@layout/fragment_all_videos">
+
+        <action
+            android:id="@+id/action_nav_AllVideos_to_nav_home"
+            app:destination="@id/nav_home" />
+
+        <action
+            android:id="@+id/action_allVideosFragment_to_mergeVideoFragment"
+            app:destination="@id/nav_mergevideofragment">
+
+            <argument
+                android:name="selected_videos"
+                app:argType="com.addmusictovideos.audiovideomixer.sk.model.Video[]" />
+
+        </action>
+
+        <action
+            android:id="@+id/action_allVideosFragment_to_extract_audio"
+            app:destination="@id/nav_extract_audio">
+
+            <argument
+                android:name="videoPath"
+                app:argType="string" />
+
+        </action>
+
+        <action
+            android:id="@+id/action_allVideosFragment_to_slow_video"
+            app:destination="@id/nav_slow_speed">
+
+            <argument
+                android:name="videoPath"
+                app:argType="string" />
+
+        </action>
+
+        <action
+            android:id="@+id/action_allVideosFragment_to_fast_video"
+            app:destination="@id/nav_fast_speed">
+
+            <argument
+                android:name="videoPath"
+                app:argType="string" />
+
+        </action>
+
+        <action
+            android:id="@+id/action_allVideosFragment_to_allaudio"
+            app:destination="@id/nav_all_audio">
+
+            <argument
+                android:name="videoPath"
+                app:argType="string" />
+
+        </action>
+
+    </fragment>
+
+    <action
+        android:id="@+id/action_nav_allvideo_to_nav_cut_video"
+        app:destination="@+id/nav_cutvideo">
+
+
+        <argument
+            android:name="videoPath"
+            app:argType="string" />
+    </action>
+
+    <fragment
+        android:id="@+id/nav_all_audio"
+        android:name="com.addmusictovideos.audiovideomixer.sk.fragments.AllAudioFragment"
+        android:label="All Audios"
+        tools:layout="@layout/fragment_all_audio">
+
+
+        <argument
+            android:name="videopath"
+            app:argType="string"
+            app:nullable="true" />
+
+        <action
+            android:id="@+id/action_nav_AllAudios_to_nav_home"
+            app:destination="@id/nav_home" />
+
+        <action
+            android:id="@+id/action_nav_allaudio_to_nav_change_music"
+            app:destination="@+id/nav_changemusic">
+
+            <argument
+                android:name="videoPath"
+                app:argType="string" />
+
+            <argument
+                android:name="audioPath"
+                app:argType="string" />
+        </action>
+
+        <action
+            android:id="@+id/action_nav_allaudio_to_nav_cut_audio"
+            app:destination="@+id/nav_cut_audio">
+
+
+            <argument
+                android:name="audioPath"
+                app:argType="string" />
+        </action>
+
+        <action
+            android:id="@+id/action_allVideosFragment_to_mergeVideoFragment"
+            app:destination="@id/nav_merge_audio">
+
+            <argument
+                android:name="selected_videos"
+                app:argType="com.addmusictovideos.audiovideomixer.sk.model.Audio[]" />
+
+
+        </action>
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/nav_merge_audio"
+        android:name="com.addmusictovideos.audiovideomixer.sk.AudioModule.AudioMergeFragment"
+        android:label="Merge Audio Fragment"
+        tools:layout="@layout/fragment_audio_merge">
+
+        <argument
+            android:name="selected_videos"
+            app:argType="com.addmusictovideos.audiovideomixer.sk.model.Audio[]" />
+
+
+        <action
+            android:id="@+id/action_mergeAudioFragment_to_mergeAudioProgressFragment"
+            app:destination="@id/nav_merge_audio_progress">
+
+            <argument
+                android:name="selected_videos"
+                app:argType="com.addmusictovideos.audiovideomixer.sk.model.Audio[]" />
+        </action>
+
+        <action
+            android:id="@+id/action_mergeAudioFragment_to_all_audios"
+            app:destination="@id/nav_all_audio" />
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_merge_audio_progress"
+        android:name="com.addmusictovideos.audiovideomixer.sk.AudioModule.MergeAudioConversionFragment"
+        android:label="Merge Audio Progress Fragment"
+        tools:layout="@layout/fragment_merge_audio_conversion">
+
+        <argument
+            android:name="selected_videos"
+            app:argType="com.addmusictovideos.audiovideomixer.sk.model.Audio[]" />
+
+
+        <action
+            android:id="@+id/action_mergeAudioProgressFragment_to_finaloutput"
+            app:destination="@id/nav_finaloutput">
+
+            <argument
+                android:name="audiopath"
+                app:argType="string" />
+        </action>
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/nav_changemusic"
+        android:name="com.addmusictovideos.audiovideomixer.sk.fragments.ChangeMusicFragment"
+        android:label="Change Music"
+        tools:layout="@layout/fragment_change_music">
+
+        <argument
+            android:name="videoPath"
+            app:argType="string" />
+
+        <argument
+            android:name="audioPath"
+            app:argType="string" />
+
+
+        <action
+            android:id="@+id/action_nav_change_music_to_nav_home"
+            app:destination="@id/nav_home" />
+
+        <action
+            android:id="@+id/action_nav_changemusic_to_nav_cutvideo"
+            app:destination="@id/nav_cutvideoforchangemusic">
+
+            <argument
+                android:name="videoPath"
+                app:argType="string" />
+
+            <argument
+                android:name="audioPath"
+                app:argType="string" />
+
+        </action>
+
+        <action
+            android:id="@+id/action_nav_changemusic_to_nav_cutaudio"
+            app:destination="@id/nav_cutaudioforchangemusic">
+
+            <argument
+                android:name="audioPath"
+                app:argType="string" />
+
+            <argument
+                android:name="videoPath"
+                app:argType="string" />
+
+        </action>
+
+        <action
+            android:id="@+id/action_nav_changemusic_to_nav_changemusicprogress"
+            app:destination="@id/nav_changemusicprogress">
+
+            <argument
+                android:name="audioPath"
+                app:argType="string" />
+
+            <argument
+                android:name="videoPath"
+                app:argType="string" />
+
+
+        </action>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_changemusicprogress"
+        android:name="com.addmusictovideos.audiovideomixer.sk.fragments.ChangeMusicProgressFragment"
+        android:label="Add Music to Video "
+        tools:layout="@layout/fragment_change_music_progress">
+
+
+        <argument
+            android:name="videoPath"
+            app:argType="string" />
+
+        <argument
+            android:name="audioPath"
+            app:argType="string" />
+
+        <action
+            android:id="@+id/action_nav_changemusicprogress_to_nav_finaloutput"
+            app:destination="@id/nav_finaloutput">
+
+            <argument
+                android:name="videoPath"
+                app:argType="string" />
+
+        </action>
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/nav_finaloutput"
+        android:name="com.addmusictovideos.audiovideomixer.sk.fragments.NewFinalOutputFragment"
+        android:label="Final Outptut Videos"
+        tools:layout="@layout/fragment_new_final_output">
+
+        <argument
+            android:name="videoPath"
+            app:argType="string" />
+
+        <action
+            android:id="@+id/action_progress_to_home"
+            app:destination="@+id/nav_home" />
+
+        <action
+            android:id="@+id/action_finaloutput_to_playvideo"
+            app:destination="@+id/nav_playoutputvideo">
+
+
+            <argument
+                android:name="videoPath"
+                app:argType="string" />
+
+        </action>
+
+        <action
+            android:id="@+id/action_finaloutput_to_playaudio"
+            app:destination="@+id/nav_PlayAudio">
+
+
+            <argument
+                android:name="videoPath"
+                app:argType="string" />
+
+        </action>
+
+        <action
+            android:id="@+id/action_finaloutput_to_displaygif"
+            app:destination="@+id/nav_displaygif">
+
+
+            <argument
+                android:name="videoPath"
+                app:argType="string" />
+
+        </action>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_cutaudioforchangemusic"
+        android:name="com.addmusictovideos.audiovideomixer.sk.fragments.CutAudioForAddMusicFragment"
+        android:label="Cut Audio "
+        tools:layout="@layout/fragment_cut_audio_for_add_music">
+
+        <argument
+            android:name="audioPath"
+            app:argType="string" />
+
+        <argument
+            android:name="videoPath"
+            app:argType="string" />
+
+
+        <action
+            android:id="@+id/action_nav_cutaudio_to_changemusic"
+            app:destination="@id/nav_changemusic">
+
+            <argument
+                android:name="videoPath"
+                app:argType="string" />
+
+            <argument
+                android:name="audioPath"
+                app:argType="string" />
+
+
+        </action>
+
+
+        <action
+            android:id="@+id/action_trimaudio_to_nav_trimaudioprogress"
+            app:destination="@id/nav_trim_progress_addmusic">
+
+            <argument
+                android:name="videoPath"
+                app:argType="string" />
+
+            <argument
+                android:name="audioPath"
+                app:argType="string" />
+            <argument
+                android:name="volume"
+                app:argType="float" />
+            <argument
+                android:name="startTime"
+                app:argType="long" />
+            <argument
+                android:name="endTime"
+                app:argType="long" />
+            <argument
+                android:name="speed"
+                app:argType="float" />
+        </action>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_trim_progress_addmusic"
+        android:name="com.addmusictovideos.audiovideomixer.sk.fragments.CutAudioProgressForAddMusicFragment"
+        android:label="Cut Audio Fragment"
+        tools:layout="@layout/fragment_cut_audio_progress_for_add_music">
+
+        <argument
+            android:name="videoPath"
+            app:argType="string" />
+
+        <argument
+            android:name="audioPath"
+            app:argType="string" />
+        <argument
+            android:name="volume"
+            app:argType="float" />
+        <argument
+            android:name="startTime"
+            app:argType="long" />
+        <argument
+            android:name="endTime"
+            app:argType="long" />
+        <argument
+            android:name="speed"
+            app:argType="float" />
+
+        <action
+            android:id="@+id/action_trimaudioprogressaddmusic_to_nav_changemusic"
+            app:destination="@id/nav_changemusic">
+
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_cutvideoforchangemusic"
+        android:name="com.addmusictovideos.audiovideomixer.sk.fragments.CutVideoForAddMusicFragment"
+        android:label="Cut Video "
+        tools:layout="@layout/fragment_cut_video_for_add_music">
+
+        <argument
+            android:name="audioPath"
+            app:argType="string" />
+
+        <argument
+            android:name="videoPath"
+            app:argType="string" />
+
+        <action
+            android:id="@+id/action_nav_cutvideo_to_changemusic"
+            app:destination="@id/nav_changemusic">
+
+
+            <argument
+                android:name="audioPath"
+                app:argType="string" />
+
+            <argument
+                android:name="videoPath"
+                app:argType="string" />
+        </action>
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/nav_cut_audio"
+        android:name="com.addmusictovideos.audiovideomixer.sk.AudioModule.CutAudioFragment"
+        android:label="Cut Audio "
+        tools:layout="@layout/fragment_cut_audio">
+
+        <argument
+            android:name="audioPath"
+            app:argType="string" />
+
+        <action
+            android:id="@+id/action_trimaudio_to_nav_trimaudioprogress"
+            app:destination="@id/nav_cut_audio_conversion">
+
+            <argument
+                android:name="audioPath"
+                app:argType="string" />
+            <argument
+                android:name="volume"
+                app:argType="float" />
+            <argument
+                android:name="startTime"
+                app:argType="long" />
+            <argument
+                android:name="endTime"
+                app:argType="long" />
+            <argument
+                android:name="speed"
+                app:argType="float" />
+        </action>
+
+        <action
+            android:id="@+id/action_nav_cutaudio_to_allaudios"
+            app:destination="@id/nav_all_audio" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_cut_audio_conversion"
+        android:name="com.addmusictovideos.audiovideomixer.sk.AudioModule.CutAudioConversionFragment"
+        android:label="Cut Audio "
+        tools:layout="@layout/fragment_cut_audio_conversion">
+
+        <argument
+            android:name="audioPath"
+            app:argType="string" />
+        <argument
+            android:name="volume"
+            app:argType="float" />
+        <argument
+            android:name="startTime"
+            app:argType="long" />
+        <argument
+            android:name="endTime"
+            app:argType="long" />
+        <argument
+            android:name="speed"
+            app:argType="float" />
+
+        <action
+            android:id="@+id/action_cutaudioconversion_to_nav_finaloutput"
+            app:destination="@id/nav_finaloutput">
+
+            <argument
+                android:name="audiopath"
+                app:argType="string" />
+        </action>
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/nav_playoutputvideo"
+        android:name="com.addmusictovideos.audiovideomixer.sk.fragments.PlayOutputVideoFragment"
+        android:label="Play Output Video Fragment"
+        tools:layout="@layout/fragment_play_video">
+        <argument
+            android:name="videoPath"
+            app:argType="string" />
+
+        <action
+            android:id="@+id/action_finaloutput_to_nav_convertvideo_conversion"
+            app:destination="@id/nav_finaloutput" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_PlayAudio"
+        android:name="com.addmusictovideos.audiovideomixer.sk.fragments.PlayOutputAudioFragment"
+        android:label="Audio Output Fragment "
+        tools:layout="@layout/fragment_play_output_audio">
+
+        <argument
+            android:name="type"
+            app:argType="string" />
+        <argument
+            android:name="path"
+            app:argType="string" />
+
+
+        <action
+            android:id="@+id/action_nav_PlayAudio_to_finaloutput"
+            app:destination="@id/nav_finaloutput">
+
+            <argument
+                android:name="output_type"
+                app:argType="string" />
+
+        </action>
+    </fragment>
+
+
+
+    <fragment
+        android:id="@+id/nav_extract_audio"
+        android:name="com.addmusictovideos.audiovideomixer.sk.AudioModule.ExtractAudioFragment"
+        android:label="Extract Audio"
+        tools:layout="@layout/fragment_extract_audio">
+
+        <argument
+            android:name="videoPath"
+            app:argType="string" />
+
+        <action
+            android:id="@+id/action_extractaudio_to_home"
+            app:destination="@+id/nav_home" />
+
+        <action
+            android:id="@+id/action_cutvideo_to_extract_audio_progress"
+            app:destination="@+id/nav_extract_audio_conversion">
+
+            <argument
+                android:name="videoPath"
+                app:argType="string" />
+        </action>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_extract_audio_conversion"
+        android:name="com.addmusictovideos.audiovideomixer.sk.AudioModule.ExtractAudioConversionFragment"
+        android:label="Cut Videos"
+        tools:layout="@layout/fragment_extract_audio_conversion">
+
+        <argument
+            android:name="videoPath"
+            app:argType="string" />
+
+        <action
+            android:id="@+id/action_progress_to_home"
+            app:destination="@+id/nav_home" />
+
+        <action
+            android:id="@+id/action_progress_to_output"
+            app:destination="@+id/nav_finaloutput">
+
+            <argument
+                android:name="videoPath"
+                app:argType="string" />
+        </action>
+
+        <action
+            android:id="@+id/action_progress_to_navallvideo"
+            app:destination="@+id/nav_all_videos" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/nav_fast_speed"
+        android:name="com.addmusictovideos.audiovideomixer.sk.fragments.FastVideoFragment"
+        android:label="Video Speed Fragment"
+        tools:layout="@layout/fragment_fast_video">
+
+
+        <argument
+            android:name="videoPath"
+            app:argType="string" />
+
+        <action
+            android:id="@+id/action_nav_speed_to_progress_speed"
+            app:destination="@id/nav_fastspeed_converstion">
+
+            <argument
+                android:name="videoPath"
+                app:argType="string" />
+
+            <argument
+                android:name="speed"
+                app:argType="float" />
+
+            <argument
+                android:name="isMuted"
+                app:argType="boolean" />
+
+        </action>
+
+        <action
+            android:id="@+id/action_nav_speed_to_nav_all_video"
+            app:destination="@id/nav_all_videos">
+
+        </action>
+
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/nav_slow_speed"
+        android:name="com.addmusictovideos.audiovideomixer.sk.fragments.SlowVideoFragment"
+        android:label="Video Speed Fragment"
+        tools:layout="@layout/fragment_slow_video">
+
+
+        <argument
+            android:name="videoPath"
+            app:argType="string" />
+
+        <action
+            android:id="@+id/action_nav_speed_to_progress_speed"
+            app:destination="@id/nav_slowspeed_converstion">
+
+            <argument
+                android:name="videoPath"
+                app:argType="string" />
+
+            <argument
+                android:name="speed"
+                app:argType="float" />
+
+            <argument
+                android:name="isMuted"
+                app:argType="boolean" />
+
+        </action>
+
+        <action
+            android:id="@+id/action_nav_speed_to_nav_all_video"
+            app:destination="@id/nav_all_videos">
+        </action>
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/nav_slowspeed_converstion"
+        android:name="com.addmusictovideos.audiovideomixer.sk.fragments.SlowVideoConversionFragment"
+        android:label="Video Speed Progress Fragment"
+        tools:layout="@layout/fragment_slow_video_conversion">
+
+        <argument
+            android:name="videoPath"
+            app:argType="string" />
+
+        <argument
+            android:name="speed"
+            app:argType="float" />
+
+        <argument
+            android:name="isMuted"
+            app:argType="boolean" />
+
+        <action
+            android:id="@+id/action_nav_speed_progress_to_nav_allvideo"
+            app:destination="@id/nav_all_videos" />
+
+        <action
+            android:id="@+id/action_nav_speed_progress_to_final_output"
+            app:destination="@id/nav_finaloutput">
+
+            <argument
+                android:name="videoPath"
+                app:argType="string" />
+
+        </action>
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_fastspeed_converstion"
+        android:name="com.addmusictovideos.audiovideomixer.sk.fragments.FastVideoConversionFragment"
+        android:label="Video Speed Progress Fragment"
+        tools:layout="@layout/fragment_fast_video_conversion">
+
+        <argument
+            android:name="videoPath"
+            app:argType="string" />
+
+        <argument
+            android:name="speed"
+            app:argType="float" />
+
+        <argument
+            android:name="isMuted"
+            app:argType="boolean" />
+
+        <action
+            android:id="@+id/action_nav_speed_progress_to_nav_allvideo"
+            app:destination="@id/nav_all_videos" />
+
+        <action
+            android:id="@+id/action_nav_speed_progress_to_final_output"
+            app:destination="@id/nav_finaloutput">
+
+            <argument
+                android:name="videoPath"
+                app:argType="string" />
+
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_cutvideo"
+        android:name="com.addmusictovideos.audiovideomixer.sk.fragments.TrimVideoFragment"
+        android:label="Cut Videos"
+        tools:layout="@layout/fragment_trim_video">
+
+        <argument
+            android:name="videoPath"
+            app:argType="string" />
+
+
+        <action
+            android:id="@+id/action_cutvideo_to_allvideo"
+            app:destination="@+id/nav_all_videos" />
+
+        <action
+            android:id="@+id/action_cutvideo_to_nav_finaloutput"
+            app:destination="@+id/nav_finaloutput">
+
+            <argument
+                android:name="videoPath"
+                app:argType="string" />
+
+        </action>
+
+        <action
+            android:id="@+id/action_cutvideo_to_home"
+            app:destination="@+id/nav_home" />
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/nav_video_output_folder"
+        android:name="com.addmusictovideos.audiovideomixer.sk.fragments.VideoOutputFoldersFragment"
+        android:label="Output Folder"
+        tools:layout="@layout/fragment_video_output_folders">
+
+        <argument
+            android:name="output_type"
+            app:argType="string" />
+
+        <action
+            android:id="@+id/action_outputfolder_to_nav_gif"
+            app:destination="@id/nav_displaygif">
+
+            <argument
+                android:name="videoPath"
+                app:argType="string" />
+
+        </action>
+
+
+        <action
+            android:id="@+id/action_outputfolder_to_video_play"
+            app:destination="@id/nav_output_videoplayer">
+
+            <argument
+                android:name="type"
+                app:argType="string" />
+            <argument
+                android:name="path"
+                app:argType="string" />
+
+        </action>
+
+        <action
+            android:id="@+id/action_outputfolder_to_audio_play"
+            app:destination="@id/nav_output_audioplayer">
+
+            <argument
+                android:name="type"
+                app:argType="string" />
+            <argument
+                android:name="path"
+                app:argType="string" />
+
+        </action>
+
+        <action
+            android:id="@+id/action_outputfolder_to_display_gif"
+            app:destination="@id/nav_displaygif">
+
+            <argument
+                android:name="type"
+                app:argType="string" />
+            <argument
+                android:name="path"
+                app:argType="string" />
+
+        </action>
+
+        <action
+            android:id="@+id/action_outputfolder_to_home"
+            app:destination="@id/nav_allOutputFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_allOutputFragment"
+        android:name="com.addmusictovideos.audiovideomixer.sk.fragments.AllOutputFragment"
+        android:label="All Output Fragment "
+        tools:layout="@layout/fragment_all_output">
+
+        <action
+            android:id="@+id/action_nav_alloutputFragment_to_home"
+            app:destination="@id/nav_home" />
+
+
+        <action
+            android:id="@+id/action_nav_alloutputFragment_to_VideoOutputFragment"
+            app:destination="@id/nav_video_output_folder">
+
+            <argument
+                android:name="output_type"
+                app:argType="string" />
+        </action>
+
+        <action
+            android:id="@+id/action_nav_alloutputFragment_to_AudioOutputFragment"
+            app:destination="@id/nav_video_output_folder">
+            <argument
+                android:name="output_type"
+                app:argType="string" />
+
+        </action>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_output_videoplayer"
+        android:name="com.addmusictovideos.audiovideomixer.sk.fragments.PlayVideoFragment"
+        android:label="Merge Progress Fragment"
+        tools:layout="@layout/fragment_play_video">
+
+        <argument
+            android:name="type"
+            app:argType="string" />
+        <argument
+            android:name="path"
+            app:argType="string" />
+
+        <action
+            android:id="@+id/action_outputplayer_to_ouputfolder"
+            app:destination="@id/nav_video_output_folder" />
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_output_audioplayer"
+        android:name="com.addmusictovideos.audiovideomixer.sk.fragments.AudioPlayFragment"
+        android:label="Audio Player Fragment"
+        tools:layout="@layout/fragment_audio_play">
+
+        <argument
+            android:name="type"
+            app:argType="string" />
+        <argument
+            android:name="path"
+            app:argType="string" />
+
+        <action
+            android:id="@+id/action_audioplayer_to_allaudio"
+            app:destination="@id/nav_video_output_folder">
+
+        </action>
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/nav_mergevideofragment"
+        android:name="com.addmusictovideos.audiovideomixer.sk.fragments.MergeVideoFragment"
+        android:label="Merge Videos"
+        tools:layout="@layout/fragment_merge_video">
+
+        <argument
+            android:name="selected_videos"
+            app:argType="com.addmusictovideos.audiovideomixer.sk.model.Video[]" />
+
+        <action
+            android:id="@+id/action_mergevideo_to_allvideo"
+            app:destination="@+id/nav_all_videos">
+
+            <argument
+                android:name="isFromMerge"
+                android:defaultValue="false"
+                app:argType="boolean" />
+        </action>
+
+        <action
+            android:id="@+id/action_mergevideo_to_home"
+            app:destination="@+id/nav_home" />
+
+        <action
+            android:id="@+id/action_mergevideo_to_mergeprogressfragment"
+            app:destination="@+id/nav_merge_progress">
+
+            <argument
+                android:name="selected_videos"
+                app:argType="com.addmusictovideos.audiovideomixer.sk.model.Video[]" />
+
+            <argument
+                android:name="aspect_ratio"
+                app:argType="string" />
+
+            <argument
+                android:name="resolution"
+                app:argType="string" />
+
+            <argument
+                android:name="selected_audios"
+                app:argType="com.addmusictovideos.audiovideomixer.sk.model.AudioFile[]" />
+
+            <argument
+                android:name="merge_style"
+                app:argType="string" />
+
+        </action>
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/nav_merge_progress"
+        android:name="com.addmusictovideos.audiovideomixer.sk.fragments.MergeVideoConversionFragment"
+        android:label="Merge Progress Fragment"
+        tools:layout="@layout/fragment_merge_video_conversion">
+
+        <argument
+            android:name="selected_videos"
+            app:argType="com.addmusictovideos.audiovideomixer.sk.model.Video[]" />
+
+        <argument
+            android:name="aspect_ratio"
+            app:argType="string" />
+
+        <argument
+            android:name="resolution"
+            app:argType="string" />
+
+        <argument
+            android:name="merge_style"
+            app:argType="string" />
+
+        <argument
+            android:name="selected_audios"
+            app:argType="com.addmusictovideos.audiovideomixer.sk.model.AudioFile[]" />
+
+        <action
+            android:id="@+id/action_nav_progress_video_to_nav_output_progress"
+            app:destination="@+id/nav_finaloutput">
+
+            <argument
+                android:name="videoPath"
+                app:argType="string" />
+
+        </action>
+
+        <action
+            android:id="@+id/action_nav_progress_video_to_nav_allvideos"
+            app:destination="@+id/nav_all_videos" />
+    </fragment>
+</navigation>

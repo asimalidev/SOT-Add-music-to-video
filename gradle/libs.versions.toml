@@ -1,0 +1,82 @@
+[versions]
+agp = "8.4.1"
+aperoAds = "7.4.7"
+dexter = "6.2.3"
+ffmpegKitFullGpl = "6.0-2"
+firstOpenVsl = "4.1.2-alpha01"
+indicatorseekbar = "3.0.0"
+koinAndroid = "3.4.0"
+kotlin = "1.9.0"
+coreKtx = "1.15.0"
+junit = "4.13.2"
+junitVersion = "1.2.1"
+espressoCore = "3.6.1"
+appcompat = "1.7.0"
+lottie = "6.5.2"
+material = "1.12.0"
+activity = "1.10.0"
+gms = "4.4.2"
+constraintlayout = "2.2.0"
+navigationFragment = "2.8.6"
+navigation = "2.8.6"
+crashlytics = "3.0.2"
+mobileFfmpegFullGpl = "4.4.LTS"
+media3Transformer = "1.5.1"
+compose = "1.0.0-alpha01"
+sdpAndroid = "1.1.1"
+sspAndroid = "1.1.1"
+viewpager2 = "1.1.0"
+glide = "4.16.0"
+ucrop = "2.2.6"
+waveformseekbar = "5.0.2"
+firebaseBom = "33.2.0"
+firebaseCore = "21.1.1"
+firebaseCrashlytics = "19.0.3"
+firebaseMessaging = "24.0.1"
+firebasePerf = "21.0.1"
+
+[libraries]
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-media3-exoplayer = { module = "androidx.media3:media3-exoplayer", version.ref = "media3Transformer" }
+androidx-media3-ui = { module = "androidx.media3:media3-ui", version.ref = "media3Transformer" }
+androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigationFragment" }
+apero-ads = { module = "apero-inhouse:apero-ads", version.ref = "aperoAds" }
+dexter = { module = "com.karumi:dexter", version.ref = "dexter" }
+ffmpeg-kit-full-gpl = { module = "com.arthenica:ffmpeg-kit-full-gpl", version.ref = "ffmpegKitFullGpl" }
+first-open-vsl = { module = "apero-inhouse:first-open-vsl", version.ref = "firstOpenVsl" }
+indicatorseekbar = { module = "com.github.moisoni97:IndicatorSeekBar", version.ref = "indicatorseekbar" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+koin-android = { module = "io.insert-koin:koin-android", version.ref = "koinAndroid" }
+koin-core = { module = "io.insert-koin:koin-core", version.ref = "koinAndroid" }
+
+firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
+firebase-core = { module = "com.google.firebase:firebase-core", version.ref = "firebaseCore" }
+firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics", version.ref = "firebaseCrashlytics" }
+firebase-messaging = { module = "com.google.firebase:firebase-messaging", version.ref = "firebaseMessaging" }
+firebase-perf = { module = "com.google.firebase:firebase-perf", version.ref = "firebasePerf" }
+
+lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+androidx-navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment", version.ref = "navigationFragment" }
+mobile-ffmpeg-full-gpl = { module = "com.arthenica:mobile-ffmpeg-full-gpl", version.ref = "mobileFfmpegFullGpl" }
+androidx-media3-transformer = { group = "androidx.media3", name = "media3-transformer", version.ref = "media3Transformer" }
+androidx-viewpager2 = { module = "androidx.viewpager2:viewpager2", version.ref = "viewpager2" }
+glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
+compiler = { module = "com.github.bumptech.glide:compiler", version.ref = "glide" }
+sdp-android = { module = "com.intuit.sdp:sdp-android", version.ref = "sdpAndroid" }
+ssp-android = { module = "com.intuit.ssp:ssp-android", version.ref = "sspAndroid" }
+ucrop = { module = "com.github.yalantis:ucrop", version.ref = "ucrop" }
+waveformseekbar = { module = "com.github.massoudss:waveformSeekBar", version.ref = "waveformseekbar" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+androidx-navigation-safeargs = { id = "androidx.navigation.safeargs", version.ref = "navigation" }
+com-google-firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "crashlytics" }
+android-library = { id = "com.android.library", version.ref = "agp" }
+com-google-gms-google-services = { id = "com.google.gms.google-services", version.ref = "gms" }

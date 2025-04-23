@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/clRatioOptions"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@color/appbackground"
+    android:fillViewport="true"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/_10sdp">
+
+        <TextView
+            android:id="@+id/tvOriginalRatio"
+            android:layout_width="@dimen/_75sdp"
+            android:layout_height="@dimen/_70sdp"
+            android:layout_margin="@dimen/_10sdp"
+            android:background="@drawable/ic_selected_ratio"
+            android:fontFamily="@font/poppins"
+            android:gravity="center"
+            android:paddingTop="@dimen/_20sdp"
+            android:text="@string/orignal"
+            android:textColor="@color/black"
+            app:drawableTopCompat="@drawable/ic_orignal_ratio" />
+
+        <TextView
+            android:id="@+id/tv16Ratio9"
+            android:layout_width="@dimen/_75sdp"
+            android:layout_height="@dimen/_70sdp"
+            android:layout_margin="@dimen/_10sdp"
+            android:background="@drawable/ic_unselected_ratio"
+            android:fontFamily="@font/poppins"
+            android:gravity="center"
+            android:paddingTop="@dimen/_20sdp"
+            android:text="16:9"
+            android:textColor="@color/black"
+            app:drawableTopCompat="@drawable/ic_ratio2" />
+
+        <TextView
+            android:id="@+id/tv9Ratio16"
+            android:layout_width="@dimen/_75sdp"
+            android:layout_height="@dimen/_70sdp"
+            android:layout_margin="@dimen/_10sdp"
+            android:background="@drawable/ic_unselected_ratio"
+            android:fontFamily="@font/poppins"
+            android:gravity="center"
+            android:paddingTop="@dimen/_10sdp"
+            android:text="9:16"
+            android:textColor="@color/black"
+            app:drawableTopCompat="@drawable/ic_ratio3" />
+
+        <TextView
+            android:id="@+id/tv1Ratio1"
+            android:layout_width="@dimen/_75sdp"
+            android:layout_height="@dimen/_70sdp"
+            android:layout_margin="@dimen/_10sdp"
+            android:background="@drawable/ic_unselected_ratio"
+            android:fontFamily="@font/poppins"
+            android:gravity="center"
+            android:paddingTop="@dimen/_10sdp"
+            android:text="1:1"
+            android:textColor="@color/black"
+            app:drawableTopCompat="@drawable/ic_ratio4" />
+
+        <TextView
+            android:id="@+id/tv5Ratio4"
+            android:layout_width="@dimen/_75sdp"
+            android:layout_height="@dimen/_70sdp"
+            android:layout_margin="@dimen/_10sdp"
+            android:background="@drawable/ic_unselected_ratio"
+            android:fontFamily="@font/poppins"
+            android:gravity="center"
+            android:paddingTop="@dimen/_20sdp"
+            android:text="5:4"
+            android:textColor="@color/black"
+            app:drawableTopCompat="@drawable/ic_ratio5" />
+
+        <TextView
+            android:id="@+id/tv4Ratio5"
+            android:layout_width="@dimen/_75sdp"
+            android:layout_height="@dimen/_70sdp"
+            android:layout_margin="@dimen/_10sdp"
+            android:background="@drawable/ic_unselected_ratio"
+            android:fontFamily="@font/poppins"
+            android:gravity="center"
+            android:paddingTop="@dimen/_15sdp"
+            android:text="4:5"
+            android:textColor="@color/black"
+            app:drawableTopCompat="@drawable/ic_ratio6" />
+
+        <TextView
+            android:id="@+id/tv4Ratio3"
+            android:layout_width="@dimen/_75sdp"
+            android:layout_height="@dimen/_70sdp"
+            android:layout_margin="@dimen/_10sdp"
+            android:background="@drawable/ic_unselected_ratio"
+            android:fontFamily="@font/poppins"
+            android:gravity="center"
+            android:paddingTop="@dimen/_20sdp"
+            android:text="4:3"
+            android:textColor="@color/black"
+            app:drawableTopCompat="@drawable/ic_ratio7" />
+
+        <TextView
+            android:id="@+id/tv3Ratio4"
+            android:layout_width="@dimen/_75sdp"
+            android:layout_height="@dimen/_70sdp"
+            android:layout_margin="@dimen/_10sdp"
+            android:background="@drawable/ic_unselected_ratio"
+            android:fontFamily="@font/poppins"
+            android:gravity="center"
+            android:paddingTop="@dimen/_15sdp"
+            android:text="3:4"
+            android:textColor="@color/black"
+            app:drawableTopCompat="@drawable/ic_ratio8" />
+
+    </LinearLayout>
+
+</HorizontalScrollView>

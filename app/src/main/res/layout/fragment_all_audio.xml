@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appbackground"
+    tools:context=".fragments.AllAudioFragment">
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clToolbarFragment"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/appbackground"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:padding="12dp"
+            android:layout_marginStart="20dp"
+            android:src="@drawable/ic_back"
+            app:layout_constraintBottom_toBottomOf="@id/tvToolbar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvToolbar"
+            app:tint="@color/white" />
+
+        <TextView
+            android:id="@+id/tvToolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:gravity="center"
+            android:text="@string/select_files"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivBack"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivFolder"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="20dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/tvToolbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvToolbar"
+            app:tint="#4A4A4A" />
+
+        <ImageView
+            android:id="@+id/ivSearch"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_marginEnd="20dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/tvToolbar"
+            app:layout_constraintEnd_toStartOf="@+id/ivFolder"
+            app:layout_constraintTop_toTopOf="@id/tvToolbar"
+            app:tint="#4A4A4A" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tvAll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppins"
+        android:text="@string/all"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/clToolbarFragment" />
+
+    <View
+        android:id="@+id/selectedViewAllVideos"
+        android:layout_width="0dp"
+        android:layout_height="3dp"
+        android:background="@drawable/ic_selected_item"
+        app:layout_constraintEnd_toEndOf="@id/tvAll"
+        app:layout_constraintStart_toStartOf="@id/tvAll"
+        app:layout_constraintTop_toBottomOf="@id/tvAll" />
+
+
+    <TextView
+        android:id="@+id/tvFolders"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:fontFamily="@font/poppins"
+        android:text="Folder"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/tvAll"
+        app:layout_constraintTop_toTopOf="@+id/tvAll" />
+
+    <View
+        android:id="@+id/selectedViewAllFolder"
+        android:layout_width="0dp"
+        android:layout_height="3dp"
+        android:background="@drawable/ic_selected_item"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@id/tvFolders"
+        app:layout_constraintStart_toStartOf="@id/tvFolders"
+        app:layout_constraintTop_toBottomOf="@id/tvFolders" />
+
+    <TextView
+        android:id="@+id/tvSortedOrder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="@string/sort_by"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/selectedViewAllVideos"
+        app:layout_constraintTop_toBottomOf="@+id/selectedViewAllVideos" />
+
+
+    <TextView
+        android:id="@+id/tvSortedOrderName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:drawableEnd="@drawable/ic_sorted_order"
+        android:drawablePadding="5dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="@string/date"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvSortedOrder"
+        app:layout_constraintStart_toEndOf="@+id/tvSortedOrder"
+        app:layout_constraintTop_toTopOf="@+id/tvSortedOrder" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/clSelectedvideo"
+        app:layout_constraintTop_toBottomOf="@+id/tvSortedOrderName">
+
+   <androidx.recyclerview.widget.RecyclerView
+       android:id="@+id/rvallaudio"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"/>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvAllFolder"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clSelectedvideo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:background="@drawable/ic_selecteditem_bg"
+        android:visibility="visible"
+        android:paddingBottom="@dimen/_20sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+        <TextView
+            android:id="@+id/tvTotalFile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_7sdp"
+            android:text="@string/selected_audio_files"
+            android:textColor="#FD003C"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivDelete"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="@dimen/_7sdp"
+            android:layout_marginTop="@dimen/_7sdp"
+            android:src="@drawable/ic_delete_file"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvSelectedVideos"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTotalFile"
+            tools:itemCount="3" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            app:layout_constraintTop_toBottomOf="@+id/rvSelectedVideos"
+            android:background="#797979"/>
+
+        <TextView
+            android:id="@+id/ivNext"
+            android:layout_width="70dp"
+            android:layout_height="@dimen/_18sdp"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:background="@drawable/rounded_bg"
+            android:gravity="center"
+            android:text="Next"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:layout_constraintTop_toBottomOf="@id/rvSelectedVideos" />
+
+        <TextView
+            android:id="@+id/TotalFile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:drawableEnd="@drawable/ic_tap_to_view"
+            android:drawablePadding="@dimen/_7sdp"
+            android:textSize="@dimen/_15ssp"
+            android:fontFamily="@font/poppins"
+            android:textStyle="bold"
+            android:textColor="#FD003C"
+            app:layout_constraintBottom_toTopOf="@id/tvDetail"
+            app:layout_constraintStart_toEndOf="@+id/ivMusicItem"
+            app:layout_constraintTop_toTopOf="@+id/ivNext" />
+
+        <TextView
+            android:id="@+id/tvDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:text="@string/tap_to_view_selected_files"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/TotalFile"
+            app:layout_constraintTop_toBottomOf="@id/TotalFile" />
+
+        <ImageView
+            android:id="@+id/ivMusicItem"
+            android:layout_width="56dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:src="@drawable/ic_folder_3d"
+            app:layout_constraintBottom_toBottomOf="@+id/tvDetail"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/TotalFile" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

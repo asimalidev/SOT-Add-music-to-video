@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@color/white"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+tools:context=".fragments.NewFinalOutputFragment">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/clToolbarFragment"
+    android:layout_width="match_parent"
+    android:layout_height="?actionBarSize"
+    android:background="#F8F3F3"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <ImageView
+        android:id="@+id/ivBack"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="20dp"
+        android:src="@drawable/ic_back"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/tvToolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvToolbar" />
+
+    <TextView
+        android:id="@+id/tvToolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_marginStart="20dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="center"
+        android:text="@string/output_file"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ivBack"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/ivHome"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_home"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvToolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvToolbar"
+        app:tint="@color/black" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/clItem"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toBottomOf="@+id/clToolbarFragment"
+    android:layout_marginTop="@dimen/_10sdp"
+    android:padding="@dimen/_10sdp"
+    >
+
+    <ImageView
+        android:id="@+id/ivmusic"
+        android:layout_width="58dp"
+        android:layout_height="58dp"
+        android:src="@drawable/ic_music"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="Audio Icon" />
+
+    <TextView
+        android:id="@+id/outputFileName"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_25ssp"
+        android:paddingStart="@dimen/_10sdp"
+        android:paddingTop="10dp"
+        android:textColor="#494848"
+        android:text="@string/file_name"
+        android:textStyle="bold"
+        android:maxLines="1"
+        android:visibility="visible"
+        app:layout_constraintEnd_toStartOf="@+id/tvEditName"
+        app:layout_constraintStart_toEndOf="@+id/ivmusic"
+        app:layout_constraintTop_toTopOf="@+id/ivmusic" />
+
+    <ImageView
+        android:id="@+id/tvEditName"
+        android:layout_width="@dimen/_24sdp"
+        android:layout_height="@dimen/_24sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:src="@drawable/ic_edit"
+        app:layout_constraintBottom_toBottomOf="@+id/ivmusic"
+        app:layout_constraintEnd_toStartOf="@+id/ivcomplete"
+        app:layout_constraintTop_toTopOf="@+id/ivmusic" />
+
+    <ImageView
+        android:id="@+id/ivcomplete"
+        android:layout_width="@dimen/_24sdp"
+        android:layout_height="@dimen/_24sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:src="@drawable/ic_complete"
+        app:layout_constraintBottom_toBottomOf="@+id/ivmusic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/outputFileName" />
+
+
+    <TextView
+        android:id="@+id/outputFileSize"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/_10sdp"
+        android:paddingTop="5dp"
+        android:text="File Size"
+        android:textSize="16sp"
+        android:textColor="#535353"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/ivmusic"
+        app:layout_constraintEnd_toStartOf="@+id/tvEditName"
+        app:layout_constraintStart_toEndOf="@+id/ivmusic"
+        app:layout_constraintTop_toBottomOf="@+id/outputFileName" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:layout_marginTop="@dimen/_10sdp"
+    android:padding="10dp"
+    android:weightSum="1"
+    app:layout_constraintTop_toBottomOf="@+id/clItem">
+
+    <LinearLayout
+        android:id="@+id/llfacebook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_weight="0.25"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:contentDescription="Facebook"
+            android:src="@drawable/ic_facebook" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Facebook"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llInstagram"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:gravity="center"
+        android:layout_weight="0.25"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:contentDescription="Instagram"
+            android:src="@drawable/ic_insta" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Instagram"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- WhatsApp -->
+    <LinearLayout
+        android:id="@+id/llWhatsapp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:gravity="center"
+        android:layout_weight="0.25"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:contentDescription="WhatsApp"
+            android:src="@drawable/ic_whatsapp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Whatsapp"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:gravity="center"
+        android:layout_weight="0.25"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:contentDescription="Info"
+            android:src="@drawable/ic_info" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Info"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
