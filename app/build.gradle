@@ -24,14 +24,121 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            shrinkResources true
+            minifyEnabled true
+            resValue("string", "CrashlyticsEnabled", "true")
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            resValue "string", "admob_app_id", '"ca-app-pub-3940256099942544~3347511713'
+            resValue "string", "MINTEGRAL_APP_ID", '""'
+            resValue "string", "MINTEGRAL_APP_KEY", '""'
+
+            // SOT-Ads-ID's
+            resValue "string", "ADMOB_SPLASH_INTERSTITIAL", '"ca-app-pub-3940256099942544/1033173712"'
+            resValue "string", "ADMOB_SPLASH_RESUME", '"ca-app-pub-3940256099942544/9257395921"'
+            resValue "string", "ADMOB_BANNER_SPLASH", '"ca-app-pub-3940256099942544/9214589741"'
+            resValue "string", "ADMOB_NATIVE_LANGUAGE_1", '"ca-app-pub-3940256099942544/2247696110"'
+            resValue "string", "ADMOB_NATIVE_LANGUAGE_2", '"ca-app-pub-3940256099942544/2247696110"'
+            resValue "string", "ADMOB_NATIVE_SURVEY_1", '"ca-app-pub-3940256099942544/2247696110"'
+            resValue "string", "ADMOB_NATIVE_SURVEY_2", '"ca-app-pub-3940256099942544/2247696110"'
+            resValue "string", "ADMOB_NATIVE_WALKTHROUGH_1", '"ca-app-pub-3940256099942544/2247696110"'
+            resValue "string", "ADMOB_NATIVE_WALKTHROUGH_2", '"ca-app-pub-3940256099942544/2247696110"'
+            resValue "string", "ADMOB_NATIVE_WALKTHROUGH_FULLSCR", '"ca-app-pub-3940256099942544/2247696110"'
+            resValue "string", "ADMOB_NATIVE_WALKTHROUGH_3", '"ca-app-pub-3940256099942544/2247696110"'
+            resValue "string", "ADMOB_INTERSTITIAL_LETS_START", '"ca-app-pub-3940256099942544/1033173712"'
+
+            // Meta
+            resValue "string", "META_SPLASH_INTERSTITIAL", '""'
+            resValue "string", "META_SPLASH_RESUME", '""'
+            resValue "string", "META_BANNER_SPLASH", '""'
+            resValue "string", "META_NATIVE_LANGUAGE_1", '""'
+            resValue "string", "META_NATIVE_LANGUAGE_2", '""'
+            resValue "string", "META_NATIVE_SURVEY_1", '""'
+            resValue "string", "META_NATIVE_SURVEY_2", '""'
+            resValue "string", "META_NATIVE_WALKTHROUGH_1", '""'
+            resValue "string", "META_NATIVE_WALKTHROUGH_2", '""'
+            resValue "string", "META_NATIVE_WALKTHROUGH_FULLSCR", '""'
+            resValue "string", "META_NATIVE_WALKTHROUGH_3", '""'
+            resValue "string", "META_INTERSTITIAL_LETS_START", '""'
+
+            // Ad PlacementID-UnitID
+            resValue "string", "MINTEGRAL_SPLASH_INTERSTITIAL", '"2148175-4158367"'
+            resValue "string", "MINTEGRAL_SPLASH_RESUME", '"2148173-4158365"'
+            resValue "string", "MINTEGRAL_BANNER_SPLASH", '"2148158-4158344"'
+            resValue "string", "MINTEGRAL_BANNER_LANGUAGE_1", '"2148160-4158346"'
+            resValue "string", "MINTEGRAL_BANNER_LANGUAGE_2", '"2148160-4158346"'
+            resValue "string", "MINTEGRAL_BANNER_SURVEY_1", '"2148162-4158348"'
+            resValue "string", "MINTEGRAL_BANNER_SURVEY_2", '"2148162-4158348"'
+            resValue "string", "MINTEGRAL_BANNER_WALKTHROUGH_1", '"2148168-4158360"'
+            resValue "string", "MINTEGRAL_BANNER_WALKTHROUGH_2", '"2148168-4158360"'
+            resValue "string", "MINTEGRAL_BANNER_WALKTHROUGH_FULLSCR", '"2148171-4158363"'
+            resValue "string", "MINTEGRAL_BANNER_WALKTHROUGH_3", '"2148168-4158360"'
+            resValue "string", "MINTEGRAL_INTERSTITIAL_LETS_START", '"2148181-4158381"'
+
+            resValue "string", "INTER_INSIDE", '"ca-app-pub-3940256099942544/1033173712"'
+            resValue "string", "NATIVE_INSIDE", '"ca-app-pub-3940256099942544/2247696110"'
+            resValue "string", "BANNER_INSIDE", '"ca-app-pub-3940256099942544/6300978111"'
+        }
+        debug{
+            shrinkResources false
+            minifyEnabled false
+            resValue("string", "CrashlyticsEnabled", "false")
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            resValue "string", "admob_app_id", '"ca-app-pub-3940256099942544~3347511713'
+
+            resValue "string", "MINTEGRAL_APP_ID", '""'
+            resValue "string", "MINTEGRAL_APP_KEY", '""'
+            resValue "string", "ADMOB_SPLASH_INTERSTITIAL", '"ca-app-pub-3940256099942544/1033173712"'
+            resValue "string", "ADMOB_SPLASH_RESUME", '"ca-app-pub-3940256099942544/9257395921"'
+            resValue "string", "ADMOB_BANNER_SPLASH", '"ca-app-pub-3940256099942544/9214589741"'
+            resValue "string", "ADMOB_NATIVE_LANGUAGE_1", '"ca-app-pub-3940256099942544/2247696110"'
+            resValue "string", "ADMOB_NATIVE_LANGUAGE_2", '"ca-app-pub-3940256099942544/2247696110"'
+            resValue "string", "ADMOB_NATIVE_SURVEY_1", '"ca-app-pub-3940256099942544/2247696110"'
+            resValue "string", "ADMOB_NATIVE_SURVEY_2", '"ca-app-pub-3940256099942544/2247696110"'
+            resValue "string", "ADMOB_NATIVE_WALKTHROUGH_1", '"ca-app-pub-3940256099942544/2247696110"'
+            resValue "string", "ADMOB_NATIVE_WALKTHROUGH_2", '"ca-app-pub-3940256099942544/2247696110"'
+            resValue "string", "ADMOB_NATIVE_WALKTHROUGH_FULLSCR", '"ca-app-pub-3940256099942544/2247696110"'
+            resValue "string", "ADMOB_NATIVE_WALKTHROUGH_3", '"ca-app-pub-3940256099942544/2247696110"'
+            resValue "string", "ADMOB_INTERSTITIAL_LETS_START", '"ca-app-pub-3940256099942544/1033173712"'
+
+            // Meta
+            resValue "string", "META_SPLASH_INTERSTITIAL", '""'
+            resValue "string", "META_SPLASH_RESUME", '""'
+            resValue "string", "META_BANNER_SPLASH", '""'
+            resValue "string", "META_NATIVE_LANGUAGE_1", '""'
+            resValue "string", "META_NATIVE_LANGUAGE_2", '""'
+            resValue "string", "META_NATIVE_SURVEY_1", '""'
+            resValue "string", "META_NATIVE_SURVEY_2", '""'
+            resValue "string", "META_NATIVE_WALKTHROUGH_1", '""'
+            resValue "string", "META_NATIVE_WALKTHROUGH_2", '""'
+            resValue "string", "META_NATIVE_WALKTHROUGH_FULLSCR", '""'
+            resValue "string", "META_NATIVE_WALKTHROUGH_3", '""'
+            resValue "string", "META_INTERSTITIAL_LETS_START", '""'
+
+            // Ad PlacementID-UnitID
+            resValue "string", "MINTEGRAL_SPLASH_INTERSTITIAL", '"2148175-4158367"'
+            resValue "string", "MINTEGRAL_SPLASH_RESUME", '"2148173-4158365"'
+            resValue "string", "MINTEGRAL_BANNER_SPLASH", '"2148158-4158344"'
+            resValue "string", "MINTEGRAL_BANNER_LANGUAGE_1", '"2148160-4158346"'
+            resValue "string", "MINTEGRAL_BANNER_LANGUAGE_2", '"2148160-4158346"'
+            resValue "string", "MINTEGRAL_BANNER_SURVEY_1", '"2148162-4158348"'
+            resValue "string", "MINTEGRAL_BANNER_SURVEY_2", '"2148162-4158348"'
+            resValue "string", "MINTEGRAL_BANNER_WALKTHROUGH_1", '"2148168-4158360"'
+            resValue "string", "MINTEGRAL_BANNER_WALKTHROUGH_2", '"2148168-4158360"'
+            resValue "string", "MINTEGRAL_BANNER_WALKTHROUGH_FULLSCR", '"2148171-4158363"'
+            resValue "string", "MINTEGRAL_BANNER_WALKTHROUGH_3", '"2148168-4158360"'
+            resValue "string", "MINTEGRAL_INTERSTITIAL_LETS_START", '"2148181-4158381"'
+
+            resValue "string", "INTER_INSIDE", '"ca-app-pub-3940256099942544/1033173712"'
+            resValue "string", "NATIVE_INSIDE", '"ca-app-pub-3940256099942544/2247696110"'
+            resValue "string", "BANNER_INSIDE", '"ca-app-pub-3940256099942544/6300978111"'
         }
     }
-
-    viewBinding {
-        enabled = true
+    buildFeatures{
+        buildConfig = true
+        viewBinding = true
     }
+
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -51,6 +158,7 @@ dependencies {
     implementation libs.androidx.constraintlayout
     implementation libs.androidx.navigation.fragment
     implementation libs.androidx.media3.transformer
+    implementation libs.firebase.config.ktx
     testImplementation libs.junit
     androidTestImplementation libs.androidx.junit
     androidTestImplementation libs.androidx.espresso.core
@@ -80,4 +188,8 @@ dependencies {
     implementation libs.firebase.crashlytics
     implementation("com.google.firebase:firebase-analytics-ktx:22.1.0")
     implementation ("com.makeramen:roundedimageview:2.3.0")
+    implementation("com.google.android.gms:play-services-ads:23.0.0")
+    /*SOT_AD_LIB*/
+    implementation 'com.github.usamaitiffaq:SOT-Ad-Lib:1.3.4'
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
 }

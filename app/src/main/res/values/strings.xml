@@ -79,4 +79,18 @@
     <string name="_2_files_to_be_merged">2 files to be merged</string>
     <string name="merge">Merge</string>
     <string name="to_be_merged">%1$s %2$s to be merged</string>
+    <string name="this_action_may_contains_the_ads">This action may contains the ads.</string>
+    <string name="transforming_your_desires_into_reality">Transforming your desires into reality.</string>
+    <string name="choose_the_features_that_suit_your_requirements">Choose the features that suit your requirements.</string>
+    <string name="photo_slideshow">Photo Slideshow</string>
+    <string name="reverse_video">Reverse video</string>
+    <string name="video_to_gif">Video to GIF</string>
+    <string name="split_audio">Split Audio</string>
+    <string name="convert_audio">Convert Audio</string>
+    <string name="audio_mixer">Audio Mixer</string>
+    <string name="add_music_to_video_with_multiple_background_tracks">Add music to video with multiple background tracks!</string>
+    <string name="change_video_speed">Change Video Speed</string>
+    <string name="you_can_change_the_speed_for_video_fast_or_slow_motion_control">You can change the speed for video fast or slow-motion control!</string>
+    <string name="cut_video_merge_video_split_video_in_timeline_or_multi_split_videos_into_several_clips">Cut video Merge video Split video in timeline or multi-Split videos into several clips!</string>
+    <string name="video_cutter_and_editor">Video Cutter and Editor</string>
 </resources>

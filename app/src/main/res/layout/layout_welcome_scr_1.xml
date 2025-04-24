@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainParent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        app:layout_constraintBottom_toTopOf="@+id/svItems"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txtTop"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lexend_semibold"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/_14ssp"
+            android:text="@string/transforming_your_desires_into_reality"
+            android:textColor="@color/black"
+            app:fontFamily="@font/poppins_semibold"
+            app:layout_constraintBottom_toTopOf="@+id/txtBottom"
+            app:layout_constraintEnd_toStartOf="@+id/txtNext"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txtNext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lexend_semibold"
+            android:gravity="center_vertical"
+            android:padding="@dimen/_10sdp"
+            android:text="@string/label_next"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintBottom_toBottomOf="@+id/txtTop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/txtTop"
+            app:layout_constraintTop_toTopOf="@+id/txtTop" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txtBottom"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lexend_semibold"
+            android:gravity="start"
+            android:text="@string/choose_the_features_that_suit_your_requirements"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtTop" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:id="@+id/svItems"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/adsC"
+        app:layout_constraintEnd_toEndOf="@+id/mainParent"
+        app:layout_constraintStart_toStartOf="@+id/mainParent"
+        app:layout_constraintTop_toBottomOf="@+id/mainParent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtWallpapers"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:background="@drawable/ic_unselected_state"
+                android:drawableTop="@drawable/photo_slide_show"
+                android:drawablePadding="@dimen/_10sdp"
+                android:elevation="@dimen/_10sdp"
+                android:fontFamily="@font/lexend_semibold"
+                android:gravity="bottom|center"
+                android:padding="@dimen/_10sdp"
+                android:text="@string/photo_slideshow"
+                android:textColor="#333333"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/txtEditor"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="VisualLintOverlap" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/progress"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_100sdp"
+                android:elevation="@dimen/_10sdp"
+                android:translationX="40dp"
+                android:translationY="-15dp"
+                app:lottie_rawRes="@raw/hand_anim"
+                app:layout_constraintBottom_toBottomOf="@+id/txtWallpapers"
+                app:layout_constraintEnd_toEndOf="@+id/txtWallpapers"
+                app:layout_constraintStart_toStartOf="@+id/txtWallpapers"
+                app:layout_constraintTop_toTopOf="@+id/txtWallpapers"
+                app:lottie_autoPlay="true"
+                app:lottie_repeatCount="999999"
+                app:lottie_repeatMode="reverse" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtEditor"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:background="@drawable/ic_unselected_state"
+                android:drawableTop="@drawable/reverse_vedio"
+                android:drawablePadding="@dimen/_10sdp"
+                android:elevation="@dimen/_10sdp"
+                android:fontFamily="@font/lexend_semibold"
+                android:gravity="bottom|center"
+                android:padding="@dimen/_10sdp"
+                android:text="@string/reverse_video"
+                android:textColor="#333333"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/txtWallpapers"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/txtWallpapers"
+                app:layout_constraintTop_toTopOf="@+id/txtWallpapers" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtLiveThemes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:background="@drawable/ic_unselected_state"
+                android:drawableTop="@drawable/vedio_to_gif"
+                android:drawablePadding="@dimen/_10sdp"
+                android:elevation="@dimen/_10sdp"
+                android:fontFamily="@font/lexend_semibold"
+                android:gravity="bottom|center"
+                android:padding="@dimen/_10sdp"
+                android:text="@string/video_to_gif"
+                android:textColor="#333333"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/txtPhotoOnKeyboard"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtWallpapers" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtPhotoOnKeyboard"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:background="@drawable/ic_unselected_state"
+                android:drawableTop="@drawable/split_vedio"
+                android:drawablePadding="@dimen/_10sdp"
+                android:elevation="@dimen/_10sdp"
+                android:fontFamily="@font/lexend_semibold"
+                android:gravity="bottom|center"
+                android:padding="@dimen/_10sdp"
+                android:text="@string/split_audio"
+                android:textColor="#333333"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/txtLiveThemes"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/txtLiveThemes"
+                app:layout_constraintTop_toTopOf="@+id/txtLiveThemes" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtPhotoTranslator"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:background="@drawable/ic_unselected_state"
+                android:drawableTop="@drawable/convert_audio"
+                android:drawablePadding="@dimen/_10sdp"
+                android:elevation="@dimen/_10sdp"
+                android:fontFamily="@font/lexend_semibold"
+                android:gravity="bottom|center"
+                android:padding="@dimen/_10sdp"
+                android:text="@string/convert_audio"
+                android:textColor="#333333"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/txtInstantSticker"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtLiveThemes" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtInstantSticker"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:background="@drawable/ic_unselected_state"
+                android:drawableTop="@drawable/audio_mixer"
+                android:drawablePadding="@dimen/_10sdp"
+                android:elevation="@dimen/_10sdp"
+                android:fontFamily="@font/lexend_semibold"
+                android:gravity="bottom|center"
+                android:padding="@dimen/_10sdp"
+                android:text="@string/audio_mixer"
+                android:textColor="#333333"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/txtPhotoTranslator"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/txtPhotoTranslator"
+                app:layout_constraintTop_toTopOf="@+id/txtPhotoTranslator" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/adsC"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/svItems">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/nativeAdContainerAdmob"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_3sdp"
+            app:cardCornerRadius="@dimen/_5sdp"
+            app:cardElevation="10dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmerLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <include layout="@layout/admob_native_media_view_shimmer" />
+            </com.facebook.shimmer.ShimmerFrameLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/nativeAdContainerMintegral"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_3sdp"
+            app:cardCornerRadius="@dimen/_5sdp"
+            app:cardElevation="10dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <FrameLayout
+                    android:id="@+id/bannerAdMint"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:visibility="gone"
+                    android:background="#D9D9D9"
+                    app:layout_constraintStart_toStartOf="@+id/shimmerLayoutMint"
+                    app:layout_constraintEnd_toEndOf="@+id/shimmerLayoutMint"
+                    app:layout_constraintTop_toTopOf="@+id/shimmerLayoutMint"
+                    app:layout_constraintBottom_toBottomOf="@+id/shimmerLayoutMint"/>
+
+                <com.facebook.shimmer.ShimmerFrameLayout
+                    android:id="@+id/shimmerLayoutMint"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent">
+
+                    <include layout="@layout/admob_native_media_view_shimmer" />
+                </com.facebook.shimmer.ShimmerFrameLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

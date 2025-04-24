@@ -34,6 +34,7 @@ firebaseCore = "21.1.1"
 firebaseCrashlytics = "19.0.3"
 firebaseMessaging = "24.0.1"
 firebasePerf = "21.0.1"
+firebaseConfigKtx = "22.1.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -72,6 +73,7 @@ sdp-android = { module = "com.intuit.sdp:sdp-android", version.ref = "sdpAndroid
 ssp-android = { module = "com.intuit.ssp:ssp-android", version.ref = "sspAndroid" }
 ucrop = { module = "com.github.yalantis:ucrop", version.ref = "ucrop" }
 waveformseekbar = { module = "com.github.massoudss:waveformSeekBar", version.ref = "waveformseekbar" }
+firebase-config-ktx = { group = "com.google.firebase", name = "firebase-config-ktx", version.ref = "firebaseConfigKtx" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -24,4 +24,5 @@
     <color name="gray">#A39696</color>
     <color name="appcolor">#00FF1A</color>
     <color name="itembackground">#FBDFE5</color>
+    <color name="lightTransparent">#16000000</color>
 </resources>
