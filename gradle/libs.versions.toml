@@ -24,6 +24,8 @@ mobileFfmpegFullGpl = "4.4.LTS"
 media3Transformer = "1.5.1"
 compose = "1.0.0-alpha01"
 sdpAndroid = "1.1.1"
+shimmer = "0.5.0"
+sotAdLib = "1.3.5"
 sspAndroid = "1.1.1"
 viewpager2 = "1.1.0"
 glide = "4.16.0"
@@ -70,6 +72,8 @@ androidx-viewpager2 = { module = "androidx.viewpager2:viewpager2", version.ref =
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 compiler = { module = "com.github.bumptech.glide:compiler", version.ref = "glide" }
 sdp-android = { module = "com.intuit.sdp:sdp-android", version.ref = "sdpAndroid" }
+shimmer = { module = "com.facebook.shimmer:shimmer", version.ref = "shimmer" }
+sot-ad-lib = { module = "com.github.usamaitiffaq:SOT-Ad-Lib", version.ref = "sotAdLib" }
 ssp-android = { module = "com.intuit.ssp:ssp-android", version.ref = "sspAndroid" }
 ucrop = { module = "com.github.yalantis:ucrop", version.ref = "ucrop" }
 waveformseekbar = { module = "com.github.massoudss:waveformSeekBar", version.ref = "waveformseekbar" }

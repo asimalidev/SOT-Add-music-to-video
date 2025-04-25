@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import java.io.File
 import android.os.Parcel
 import android.os.Parcelable
-import com.addmusictovideos.audiovideomixer.sk.MainActivity
+import com.addmusictovideos.audiovideomixer.sk.activities.MainActivity
 
 data class Video(
     val id: String,

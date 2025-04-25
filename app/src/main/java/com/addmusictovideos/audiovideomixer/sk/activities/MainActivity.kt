@@ -1,4 +1,4 @@
-package com.addmusictovideos.audiovideomixer.sk
+package com.addmusictovideos.audiovideomixer.sk.activities
 
 import android.content.Context
 import android.content.pm.PackageManager
@@ -14,6 +14,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import com.addmusictovideos.audiovideomixer.sk.R
 import com.addmusictovideos.audiovideomixer.sk.model.Folder
 import com.addmusictovideos.audiovideomixer.sk.model.Video
 import java.util.Locale

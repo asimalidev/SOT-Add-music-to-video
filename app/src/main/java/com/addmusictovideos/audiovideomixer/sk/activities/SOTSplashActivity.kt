@@ -1,4 +1,4 @@
-package com.addmusictovideos.audiovideomixer.sk.utils
+package com.addmusictovideos.audiovideomixer.sk.activities
 
 import android.content.Context
 import android.content.ContextWrapper
@@ -8,7 +8,6 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.text.TextUtils
 import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -16,16 +15,14 @@ import android.view.View
 import android.view.WindowInsets
 import android.view.WindowInsetsController
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.AppCompatTextView
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.addmusictovideos.audiovideomixer.sk.MainActivity
 import com.addmusictovideos.audiovideomixer.sk.R
 import com.addmusictovideos.audiovideomixer.sk.databinding.ActivitySotSplashBinding
 import com.addmusictovideos.audiovideomixer.sk.utils.ApplicationClass.Companion.applicationClass
+import com.addmusictovideos.audiovideomixer.sk.utils.CustomFirebaseEvents
+import com.addmusictovideos.audiovideomixer.sk.utils.RemoteConfigConst
 import com.airbnb.lottie.LottieAnimationView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -47,7 +44,7 @@ import com.manual.mediation.library.sotadlib.utils.NetworkCheck
 import com.manual.mediation.library.sotadlib.utils.PrefHelper
 import com.manual.mediation.library.sotadlib.utilsGoogleAdsConsent.ConsentConfigurations
 
-class SOT_SplashActivity : AppCompatActivity() {
+class SOTSplashActivity : AppCompatActivity() {
     private var mFirebaseRemoteConfig: FirebaseRemoteConfig? = null
     private lateinit var sotAdsConfigurations: SOTAdsConfigurations
     private var firstOpenFlowAdIds: HashMap<String, String> = HashMap()
@@ -62,18 +59,17 @@ class SOT_SplashActivity : AppCompatActivity() {
         supportActionBar?.hide()
        // nativeAdMobHashMap?.clear()
         //collapsibleBannerAdMobHashMap?.clear()
-        Glide.with(this@SOT_SplashActivity)
+        Glide.with(this@SOTSplashActivity)
             .asBitmap()
             .load(R.drawable.appicon)
             .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
             .skipMemoryCache(true)
             .into(binding.imageView)
 
-
         startFirstOpenFlow()
     }
     private fun startFirstOpenFlow() {
-        CustomFirebaseEvents.logEvent(this,eventName = "sot_adlib_start_scr")
+        CustomFirebaseEvents.logEvent(this, eventName = "sot_adlib_start_scr")
         firstOpenFlowAdIds.apply {
             this["ADMOB_SPLASH_INTERSTITIAL"] = resources.getString(R.string.ADMOB_SPLASH_INTERSTITIAL)
             this["ADMOB_SPLASH_RESUME"] = resources.getString(R.string.ADMOB_SPLASH_RESUME)
@@ -115,62 +111,56 @@ class SOT_SplashActivity : AppCompatActivity() {
             this["MINTEGRAL_BANNER_WALKTHROUGH_3"] = resources.getString(R.string.MINTEGRAL_BANNER_WALKTHROUGH_3)
             this["MINTEGRAL_INTERSTITIAL_LETS_START"] = resources.getString(R.string.MINTEGRAL_INTERSTITIAL_LETS_START)
         }
-
         SOTAdsManager.setOnFlowStateListener(
-
             reConfigureBuilders = {
-                Log.d("KAleem", "startFirstOpenFlow: ")
                 SOTAdsManager.refreshStrings(setUpWelcomeScreen(this), getWalkThroughList(this))
             },
             onFinish = {
-                CustomFirebaseEvents.logEvent(this,eventName = "sot_adlib_end_scr")
+                Log.i("HelloTag", "startFirstOpenFlow: ")
+                CustomFirebaseEvents.logEvent(this, eventName = "sot_adlib_end_scr")
                 gotoMainActivity()
             }
         )
 
         val consentConfig = ConsentConfigurations.Builder()
             .setApplicationContext(applicationClass)
-            .setMintegralInitializationId(appId = resources.getString(R.string.MINTEGRAL_APP_ID), appKey = resources.getString(R.string.MINTEGRAL_APP_KEY))
-            .setUnityInitializationId(gameId = "", testMode = false)
             .setActivityContext(this)
-            .setTestDeviceHashedIdList(arrayListOf(
-                "09DD12A6DB3BBF9B55D65FAA9FD7D8E0",
-                "3F8FB4EE64D851EDBA704E705EC63A62",
-                "84C3994693FB491110A5A4AEF8C5561B",
-                "CB2F3812ACAA2A3D8C0B31682E1473EB",
-                "F02B044F22C917805C3DF6E99D3B8800"))
+            .setTestDeviceHashedIdList(
+                arrayListOf(
+                    "1CACAE8A22757A86CEDB03884D2E2CFD",
+                    "09DD12A6DB3BBF9B55D65FAA9FD7D8E0",
+                    "3F8FB4EE64D851EDBA704E705EC63A62",
+                    "84C3994693FB491110A5A4AEF8C5561B",
+                    "CB2F3812ACAA2A3D8C0B31682E1473EB",
+                    "F02B044F22C917805C3DF6E99D3B8800"
+                )
+            )
             .setOnConsentGatheredCallback {
-                Log.i("ConsentMessage","SOTStartActivity: setOnConsentGatheredCallback")
+                Log.i("ConsentMessage", "SOTStartActivity: setOnConsentGatheredCallback")
                 fetchAdIDS(
                     remoteConfigOperationsCompleted = {
                         sotAdsConfigurations.setRemoteConfigData(
-                            activityContext = this@SOT_SplashActivity,
-                            myRemoteConfigData = it)
+                            activityContext = this@SOTSplashActivity,
+                            myRemoteConfigData = it
+                        )
 
                         if (NetworkCheck.isNetworkAvailable(this)) {
                             if (it.getValue(RemoteConfigConst.BANNER_SPLASH) == true) {
                                 binding.bannerAd.visibility = View.VISIBLE
-                                when {
-                                    it.getValue(RemoteConfigConst.BANNER_SPLASH_MED) == "ADMOB" -> {
-                                        loadAdmobBannerAd()
-                                    }
-                                    it.getValue(RemoteConfigConst.BANNER_SPLASH_MED) == "META" -> {
-                                        loadMetaBannerAd()
-                                    }
-                                    it.getValue(RemoteConfigConst.BANNER_SPLASH_MED) == "MINTEGRAL" -> {
-                                        loadMintegralBannerAd()
-                                    }
-                                    it.getValue(RemoteConfigConst.BANNER_SPLASH_MED) == "UNITY" -> {
-                                        loadUnityBannerAd()
-                                    }
+                                if (it.getValue(RemoteConfigConst.BANNER_SPLASH_MED) == "ADMOB") {
+                                    loadAdmobBannerAd()
+                                } else if (it.getValue(RemoteConfigConst.BANNER_SPLASH_MED) == "META") {
+                                    loadMetaBannerAd()
                                 }
+//                                else if (it.getValue(RemoteConfigConst.BANNER_SPLASH_MED) == "VUNGLE" || it.getValue(RemoteConfigConst.BANNER_SPLASH_MED) == "LIFTOFF") {
+//                                    loadVungleBannerAd()
+//                                }
                             }
                         }
                     }
                 )
             }
             .build()
-
         val welcomeScreensConfiguration = WelcomeScreensConfiguration.Builder()
             .setActivityContext(this)
             .setXMLLayout(setUpWelcomeScreen(this))
@@ -179,12 +169,33 @@ class SOT_SplashActivity : AppCompatActivity() {
         val languageScreensConfiguration = LanguageScreensConfiguration.Builder()
             .setActivityContext(this)
             .setDrawableColors(
-                selectedDrawable = AppCompatResources.getDrawable(this, R.drawable.ic_lang_selected)!!,
-                unSelectedDrawable = AppCompatResources.getDrawable(this, R.drawable.ic_lang_unselected)!!,
-                selectedRadio = AppCompatResources.getDrawable(this, R.drawable.selected_radio)!!,
-                unSelectedRadio = AppCompatResources.getDrawable(this, R.drawable.unselected_radio)!!
+                selectedDrawable = AppCompatResources.getDrawable(
+                    this,
+                    R.drawable.ic_lang_selected
+                )!!,
+                unSelectedDrawable = AppCompatResources.getDrawable(
+                    this,
+                    R.drawable.ic_lang_unselected
+                )!!,
+                selectedRadio = AppCompatResources.getDrawable(
+                    this,
+                    R.drawable.selected_radio
+                )!!,
+                unSelectedRadio = AppCompatResources.getDrawable(
+                    this,
+                    R.drawable.unselected_radio
+                )!!
             )
-            .setLanguages(arrayListOf(Language.Urdu, Language.English, Language.Hindi, Language.French, Language.Dutch, Language.Arabic, Language.German))
+            .setLanguages(
+                arrayListOf(
+                    Language.Urdu,
+                    Language.English,
+                    Language.Hindi,
+                    Language.French,
+                    Language.Arabic,
+                    Language.German
+                )
+            )
             .build()
 
         val walkThroughScreensConfiguration = WalkThroughScreensConfiguration.Builder()
@@ -201,7 +212,10 @@ class SOT_SplashActivity : AppCompatActivity() {
             .build()
 
         SOTAdsManager.startFlow(sotAdsConfigurations)
+
+
     }
+
 
 
     private fun setUpWelcomeScreen(context: Context): View {
@@ -229,7 +243,7 @@ class SOT_SplashActivity : AppCompatActivity() {
         val nextButton = welcomeScreenView.findViewById<AppCompatTextView>(R.id.txtNext)
 
         txtWallpapers.setOnClickListener {
-            CustomFirebaseEvents.logEvent(this,eventName = "survey_scr_check_wallpaper")
+            CustomFirebaseEvents.logEvent(this, eventName = "survey_scr_check_wallpaper")
             if (isDuplicateScreenStarted) {
                 SOTAdsManager.showWelcomeDupScreen()
             }
@@ -244,7 +258,7 @@ class SOT_SplashActivity : AppCompatActivity() {
             }
         }
         txtEditor.setOnClickListener {
-            CustomFirebaseEvents.logEvent(this,eventName = "survey_scr_check_pashto_editor")
+            CustomFirebaseEvents.logEvent(this, eventName = "survey_scr_check_pashto_editor")
             if (isDuplicateScreenStarted) {
                 SOTAdsManager.showWelcomeDupScreen()
             }
@@ -259,7 +273,7 @@ class SOT_SplashActivity : AppCompatActivity() {
             }
         }
         txtLiveThemes.setOnClickListener {
-            CustomFirebaseEvents.logEvent(this,eventName = "survey_scr_check_live_themes")
+            CustomFirebaseEvents.logEvent(this, eventName = "survey_scr_check_live_themes")
             if (isDuplicateScreenStarted) {
                 SOTAdsManager.showWelcomeDupScreen()
             }
@@ -274,7 +288,7 @@ class SOT_SplashActivity : AppCompatActivity() {
             }
         }
         txtPhotoOnKeyboard.setOnClickListener {
-            CustomFirebaseEvents.logEvent(this,eventName = "survey_scr_check_photo_on_keyboard")
+            CustomFirebaseEvents.logEvent(this, eventName = "survey_scr_check_photo_on_keyboard")
             if (isDuplicateScreenStarted) {
                 SOTAdsManager.showWelcomeDupScreen()
             }
@@ -289,7 +303,7 @@ class SOT_SplashActivity : AppCompatActivity() {
             }
         }
         txtPhotoTranslator.setOnClickListener {
-            CustomFirebaseEvents.logEvent(this,eventName = "survey_scr_check_photo_translator")
+            CustomFirebaseEvents.logEvent(this, eventName = "survey_scr_check_photo_translator")
             if (isDuplicateScreenStarted) {
                 SOTAdsManager.showWelcomeDupScreen()
             }
@@ -304,7 +318,7 @@ class SOT_SplashActivity : AppCompatActivity() {
             }
         }
         txtInstantSticker.setOnClickListener {
-            CustomFirebaseEvents.logEvent(this,eventName = "survey_scr_check_instant_stickers")
+            CustomFirebaseEvents.logEvent(this, eventName = "survey_scr_check_instant_stickers")
             if (isDuplicateScreenStarted) {
                 SOTAdsManager.showWelcomeDupScreen()
             }
@@ -323,12 +337,12 @@ class SOT_SplashActivity : AppCompatActivity() {
             if (txtWallpapersBool || txtEditorBool ||
                 txtLiveThemesBool || txtPhotoOnKeyboardBool ||
                 txtPhotoTranslatorBool || txtInstantStickerBool) {
-                CustomFirebaseEvents.logEvent(this,eventName = "survey2_scr")
-                CustomFirebaseEvents.logEvent(this,eventName = "survey2_scr_tap_continue")
+                CustomFirebaseEvents.logEvent(this, eventName = "survey2_scr")
+                CustomFirebaseEvents.logEvent(this, eventName = "survey2_scr_tap_continue")
                 SOTAdsManager.completeWelcomeScreens()
             } else {
-                CustomFirebaseEvents.logEvent(this,eventName = "survey1_scr")
-                CustomFirebaseEvents.logEvent(this,eventName = "survey1_scr_tap_continue")
+                CustomFirebaseEvents.logEvent(this, eventName = "survey1_scr")
+                CustomFirebaseEvents.logEvent(this, eventName = "survey1_scr_tap_continue")
                 if (isDuplicateScreenStarted) {
                     SOTAdsManager.showWelcomeDupScreen()
                 }
@@ -379,7 +393,7 @@ class SOT_SplashActivity : AppCompatActivity() {
     }
 
     private fun fetchAdIDS(remoteConfigOperationsCompleted: (HashMap<String, Any>) -> Unit) {
-        if (NetworkCheck.isNetworkAvailable(this@SOT_SplashActivity)) {
+        if (NetworkCheck.isNetworkAvailable(this@SOTSplashActivity)) {
             mFirebaseRemoteConfig = FirebaseRemoteConfig.getInstance()
             val configSettings = FirebaseRemoteConfigSettings.Builder().setMinimumFetchIntervalInSeconds(0).build()
             mFirebaseRemoteConfig!!.setConfigSettingsAsync(configSettings)
@@ -410,9 +424,15 @@ class SOT_SplashActivity : AppCompatActivity() {
             editor.putBoolean(RemoteConfigConst.NATIVE_SURVEY_2, getBoolean(RemoteConfigConst.NATIVE_SURVEY_2))
             editor.putBoolean(RemoteConfigConst.NATIVE_WALKTHROUGH_1, getBoolean(RemoteConfigConst.NATIVE_WALKTHROUGH_1))
             editor.putBoolean(RemoteConfigConst.NATIVE_WALKTHROUGH_2, getBoolean(RemoteConfigConst.NATIVE_WALKTHROUGH_2))
-            editor.putBoolean(RemoteConfigConst.NATIVE_WALKTHROUGH_FULLSCR, getBoolean(RemoteConfigConst.NATIVE_WALKTHROUGH_FULLSCR))
+            editor.putBoolean(
+                RemoteConfigConst.NATIVE_WALKTHROUGH_FULLSCR, getBoolean(
+                    RemoteConfigConst.NATIVE_WALKTHROUGH_FULLSCR
+                ))
             editor.putBoolean(RemoteConfigConst.NATIVE_WALKTHROUGH_3, getBoolean(RemoteConfigConst.NATIVE_WALKTHROUGH_3))
-            editor.putBoolean(RemoteConfigConst.INTERSTITIAL_LETS_START, getBoolean(RemoteConfigConst.INTERSTITIAL_LETS_START))
+            editor.putBoolean(
+                RemoteConfigConst.INTERSTITIAL_LETS_START, getBoolean(
+                    RemoteConfigConst.INTERSTITIAL_LETS_START
+                ))
 
             // SOT-Ads-Mediation-Config
             getString(RemoteConfigConst.RESUME_INTER_SPLASH_MED).trim().takeIf { it.isNotEmpty() }?.let {
@@ -498,7 +518,6 @@ class SOT_SplashActivity : AppCompatActivity() {
             this["NATIVE_WALKTHROUGH_FULLSCR"] = prefs.getBoolean(RemoteConfigConst.NATIVE_WALKTHROUGH_FULLSCR, false)
             this["NATIVE_WALKTHROUGH_3"] = prefs.getBoolean(RemoteConfigConst.NATIVE_WALKTHROUGH_3, false)
             this["INTERSTITIAL_LETS_START"] = prefs.getBoolean(RemoteConfigConst.INTERSTITIAL_LETS_START, false)
-
             this["RESUME_INTER_SPLASH_MED"] = "${prefs.getString(RemoteConfigConst.RESUME_INTER_SPLASH_MED, "Empty")}"
             this["RESUME_OVERALL_MED"] = "${prefs.getString(RemoteConfigConst.RESUME_OVERALL_MED, "Empty")}"
             this["BANNER_SPLASH_MED"] = "${prefs.getString(RemoteConfigConst.BANNER_SPLASH_MED, "Empty")}"
@@ -511,14 +530,13 @@ class SOT_SplashActivity : AppCompatActivity() {
             this["NATIVE_WALKTHROUGH_FULLSCR_MED"] = "${prefs.getString(RemoteConfigConst.NATIVE_WALKTHROUGH_FULLSCR_MED, "Empty")}"
             this["NATIVE_WALKTHROUGH_3_MED"] = "${prefs.getString(RemoteConfigConst.NATIVE_WALKTHROUGH_3_MED, "Empty")}"
             this["INTERSTITIAL_LETS_START_MED"] = "${prefs.getString(RemoteConfigConst.INTERSTITIAL_LETS_START_MED, "Empty")}"
-
             this["TIMER_NATIVE_F_SRC"] = "${prefs.getString(RemoteConfigConst.TIMER_NATIVE_F_SRC, "Empty")}"
         }
         return remoteConfigHashMap
     }
 
     private fun loadAdmobBannerAd() {
-        AdMobBannerAdSplash(this@SOT_SplashActivity,
+        AdMobBannerAdSplash(this@SOTSplashActivity,
             placementID = resources.getString(R.string.ADMOB_BANNER_SPLASH),
             bannerContainer = binding.bannerAd,
             shimmerContainer = binding.bannerShimmerLayout.bannerShimmerParent ,
@@ -532,7 +550,7 @@ class SOT_SplashActivity : AppCompatActivity() {
     }
 
     private fun loadMetaBannerAd() {
-        MetaBannerAdSplash(this@SOT_SplashActivity,
+        MetaBannerAdSplash(this@SOTSplashActivity,
             placementID = resources.getString(R.string.META_BANNER_SPLASH),
             bannerContainer = binding.bannerAd,
             shimmerContainer = binding.bannerShimmerLayout.bannerShimmerParent,
@@ -545,21 +563,21 @@ class SOT_SplashActivity : AppCompatActivity() {
         )
     }
     private fun gotoMainActivity() {
-        Log.d("KAleem", "gotoMainActivity: ")
+        /*Log.d("KAleem", "gotoMainActivity: ")
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
-        finish()
-        /*val time = if (PrefHelper(this).getBooleanDefault("StartScreens", default = false)) { 0 } else { if (NetworkCheck.isNetworkAvailable(this)) { 0 } else { 3000 } }
+        finish()*/
+        val time = if (PrefHelper(this).getBooleanDefault("StartScreens", default = false)) { 0 } else { if (NetworkCheck.isNetworkAvailable(this)) { 0 } else { 3000 } }
         Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this@SOT_SplashActivity, MainActivity::class.java)
+            val intent = Intent(this@SOTSplashActivity, MainActivity::class.java)
             startActivity(intent)
             finish()
-        }, time.toLong())*/
+        }, time.toLong())
     }
     private fun loadMintegralBannerAd() {
         if (resources.getString(R.string.MINTEGRAL_BANNER_SPLASH).split("-").size == 2) {
             MintegralBannerAdSplash(
-                activity = this@SOT_SplashActivity,
+                activity = this@SOTSplashActivity,
                 placementID = resources.getString(R.string.MINTEGRAL_BANNER_SPLASH).split("-")[0],
                 unitID = resources.getString(R.string.MINTEGRAL_BANNER_SPLASH).split("-")[1],
                 bannerContainer = binding.bannerAd,
