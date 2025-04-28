@@ -210,9 +210,7 @@ class SOTSplashActivity : AppCompatActivity() {
             .setWelcomeScreenConfiguration(welcomeScreensConfiguration)
             .setWalkThroughScreenConfiguration(walkThroughScreensConfiguration)
             .build()
-
         SOTAdsManager.startFlow(sotAdsConfigurations)
-
 
     }
 
